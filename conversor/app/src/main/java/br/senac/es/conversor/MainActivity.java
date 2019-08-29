@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
                 texto += " m. ";
                 // seto em txtMetros o meu texto para que ele mostre o resultado.
                 textMetros.setText(texto);
+                Double alturaempes = altraEmCentimetros / 30.48;
+                String text1 = formataValorComDoisDigitos(alturaempes);
+                text1 += " pé(s)";
+                textPes.setText(text1);
+
 
             }
 
@@ -58,23 +63,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        final Button button1 = (Button) findViewById(R.id.button1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            // Nas duas linhas acima eu instanciei o Button com o ID que dei a ele e também falei que quando clicar ele vai seguir os comandos abaixo.
-            @Override
-            public void onClick(View view) {
-                // não sei o pq desses dois Viem acima
-                Double alturaEmPes = altraEmCentimetros / 30.48;
-                //Instancei em Double pois os valores são númeos quebrados, falei que a alturaEmPes é a altraEmCentimetros / 30.48
-                String texto = formataValorComDoisDigitos(alturaEmPes);
-                // Ao mesmo tempo que instancio o String texto eu dei o valor dele.
-                texto += " pé(s)";
-                // agora o valor do texto é ele mesmo mais o pé(s)
-                textPes.setText(texto);
-                //mostro o valor do texto no na tela, onde dei o Id textPes
-
-            }
-        });
+//        final Button button1 = (Button) findViewById(R.id.button1);
+//        button1.setOnClickListener(new View.OnClickListener() {
+//            // Nas duas linhas acima eu instanciei o Button com o ID que dei a ele e também falei que quando clicar ele vai seguir os comandos abaixo.
+//            @Override
+//            public void onClick(View view) {
+//                // não sei o pq desses dois Viem acima
+//                Double alturaEmPes = altraEmCentimetros / 30.48;
+//                //Instancei em Double pois os valores são númeos quebrados, falei que a alturaEmPes é a altraEmCentimetros / 30.48
+//                String texto = formataValorComDoisDigitos(alturaEmPes);
+//                // Ao mesmo tempo que instancio o String texto eu dei o valor dele.
+//                texto += " pé(s)";
+//                // agora o valor do texto é ele mesmo mais o pé(s)
+//                textPes.setText(texto);
+//                //mostro o valor do texto no na tela, onde dei o Id textPes
+//
+//            }
+//        });
 
 
     }
