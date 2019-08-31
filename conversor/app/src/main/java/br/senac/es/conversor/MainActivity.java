@@ -16,10 +16,20 @@ public class MainActivity extends AppCompatActivity {
     //Instanciando o altraEmCentimetros como int.
     int altraEmCentimetros = 0;
 
+    public Double valorMedia(Double valor1, Double valor2, Double valor3) {
+
+        return (valor1 + valor2 + valor3) / 3;
+
+    }
+
 
     //Sobreescrevendo o método onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Double resultado = valorMedia(200.0, 30.0, 100.0);
+
+
+
         //Acessando o savedInstanceState
         super.onCreate(savedInstanceState);
         //Sei que o activity_main é a tela, provavelmente ele ta setando o que irei fazer abaixo na tela.
@@ -28,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         final TextView textMetros = (TextView) findViewById(R.id.textMetros);
         final TextView textPes = (TextView) findViewById(R.id.textPes);
         final SeekBar skbMetros = (SeekBar) findViewById(R.id.skbMetros);
+        final TextView txtMedia = (TextView) findViewById(R.id.txtMedia);
+        txtMedia.setText("Media");
+
+
         // Falando o tamando máximo de seekbar.
         skbMetros.setMax(230);
         // onProgressChanged enquanto usado, onStartTrackingTouch quando começa a usar e onStopTrackingTouch quando para de usar.
@@ -51,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // Depois que eu mexer no seekbar ele mostra a mensagem abaixo.
@@ -68,15 +83,18 @@ public class MainActivity extends AppCompatActivity {
             // Nas duas linhas acima eu instanciei o Button com o ID que dei a ele e também falei que quando clicar ele vai seguir os comandos abaixo.
             @Override
             public void onClick(View view) {
-
-                 skbMetros.setProgress(0);
-                 MainActivity.super.onPause();
+            if(altraEmCentimetros > resultado){
+                txtMedia.setText("Você é baixa" + " " + formataValorComDoisDigitos(resultado/100.0) + "M"  );
+            }else {
+                txtMedia.setText("Você é alto" + " " + formataValorComDoisDigitos(resultado/100.0) + "M"  );
+            }
 
             }
         });
 
 
     }
+
 
     private String formataValorComDoisDigitos(double valor) {
         return String.format(Locale.FRANCE, "%.2f", valor);
